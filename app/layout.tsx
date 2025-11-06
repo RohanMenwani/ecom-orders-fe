@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ReduxProvider } from "@/redux/provider";
+import Navigation from "@/components/Navigation";
 import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,12 +20,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <ReduxProvider>
           <div className="min-h-screen bg-gray-50">
+            <Navigation />
             <main className="max-w-7xl mx-auto px-4 py-8">
               {children}
             </main>
             <Toaster position="top-right" />
           </div>
+        </ReduxProvider>
       </body>
     </html>
   );
